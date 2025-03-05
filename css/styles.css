@@ -184,11 +184,11 @@ hr {
 }
 
 video {
-  width: 400px; /* Adjust size */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Remove extra space */
-  margin: 0 auto; /* Center horizontally */
-  border-radius: 20px; /* Rounded corners */
+  width: 350px; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+  border-radius: 20px;
 }
 
 /* Responsive Design */
