@@ -183,6 +183,14 @@ hr {
   width: 35px;
 }
 
+video {
+  width: 400px; /* Adjust size */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space */
+  margin: 0 auto; /* Center horizontally */
+  border-radius: 20px; /* Rounded corners */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
