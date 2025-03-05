@@ -183,13 +183,41 @@ hr {
   width: 35px;
 }
 
+/* Animated Logo */
+
 video {
   width: 350px; 
   height: auto; 
-  display: block; 
+  display: block;
   margin: 0 auto; 
   border-radius: 20px;
 }
+
+/* Click Effect */
+.click-effect {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #f2e9dd; /* Light color for visibility */
+  border-radius: 50%;
+  pointer-events: none; /* Prevent interaction */
+  transform: scale(0);
+  animation: clickAnimation 0.7s ease-out forwards;
+  box-shadow: 0 0 20px #fbf496;
+}
+
+/* Animation */
+@keyframes clickAnimation {
+  0% {
+      transform: scale(0);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(3);
+      opacity: 0;
+  }
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
