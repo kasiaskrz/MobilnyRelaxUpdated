@@ -78,18 +78,6 @@ body {
   left: 0;
 }
 
-
-.language-buttons button,
-.phone-button {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #f9f9f9;
-  color: #fab118;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
 /* Hero Section */
 .hero {
   background-color: #ddd;
@@ -131,17 +119,30 @@ body {
 }
 
 /* Language and Phone Buttons */
-.language-buttons {
-  display: flex;
-  gap: 10px;
-  margin-right: 20px;
-  color: #f9f9f9;
+.language-buttons button,
+.phone-button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
+.language-buttons button{
+  color:white;
+  font-size: 15px;
+  border: 1px solid white;
+  background-color: #fab118;
+}
 
 .phone-button {
   background-color: #f9f9f9;
   border: 1px #f9f9f9 solid;
+  color: #fab118;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  border-radius: 15px;
 }
 
 .navbar-top {
@@ -149,6 +150,11 @@ body {
   background-color: #F2E9DD;
   text-align: center;
   font-size: 15px;
+}
+
+.phone-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 
