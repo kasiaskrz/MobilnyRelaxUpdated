@@ -44,7 +44,7 @@
             <br>
 
             <form id="contactForm" class="contact-form">
-                <h2>FILL OUT THE FORM AND WE WILL CONTACT YOU BACK</h2>
+                <h2>BOOK A DATE</h2>
             
                 <div class="form-group">
                     <label for="service">Service</label>
@@ -88,9 +88,42 @@
                 </div>
             
                 <div class="form-group">
-                    <button type="submit" id="submitBtn">Submit</button>
+                    <button type="submit" id="submitBtn">Proceed to Payment</button>
                 </div>
             </form>
+        </div>
+
+        <!-- Booking Confirmation & Payment Modal -->
+        <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Booking Summary</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-body-content">
+                        <!-- Booking Details -->
+                        <div id="bookingSummary">
+                            <p><strong>Service:</strong> <span id="modalService"></span></p>
+                            <p><strong>Start Date:</strong> <span id="modalStartDate"></span></p>
+                            <p><strong>End Date:</strong> <span id="modalEndDate"></span></p>
+                            <p><strong>Name:</strong> <span id="modalName"></span></p>
+                            <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+                            <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                            <button class="btn btn-primary" id="proceedToPayment">Proceed to Payment</button>
+                        </div>
+
+                        <!-- Payment Form (Hidden Initially) -->
+                        <div id="paymentSection" style="display: none;">
+                            <h5>Enter Payment Details</h5>
+                            <input type="text" id="cardNumber" class="form-control" placeholder="Card Number">
+                            <input type="text" id="expiryDate" class="form-control" placeholder="Expiry Date">
+                            <input type="text" id="cvv" class="form-control" placeholder="CVV">
+                            <button class="btn btn-success mt-2" id="confirmPayment">Confirm Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer>
@@ -123,35 +156,8 @@
         </footer>
     </div>
 
-    <script>
-        let translations = {};
-
-        // Load translations
-        fetch("translations.json")
-          .then(response => response.json())
-          .then(data => {
-              translations = data;
-              applyLanguage(localStorage.getItem("selectedLanguage") || "en");
-          });
-
-        function changeLanguage(lang) {
-            localStorage.setItem("selectedLanguage", lang);
-            applyLanguage(lang);
-        }
-
-        function applyLanguage(lang) {
-            document.querySelectorAll("[data-lang]").forEach(element => {
-                let key = element.getAttribute("data-lang");
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-        }
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
     <script src="js/contact.js"></script>
 
 </body>

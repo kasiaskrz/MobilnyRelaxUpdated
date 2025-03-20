@@ -4,50 +4,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let serviceInput = document.getElementById("service");
     let dateMessage = document.getElementById("dateMessage");
     let submitBtn = document.getElementById("submitBtn");
+    let bookingForm = document.getElementById("contactForm");
 
-    let today = new Date();
-    let minDate = new Date(today);
-    minDate.setDate(today.getDate() + 2); // Min: 2 days later
-    let maxDate = new Date(today);
-    maxDate.setMonth(today.getMonth() + 4); // Max: 4 months later
-
-    let formattedMinDate = minDate.toISOString().split("T")[0];
-    let formattedMaxDate = maxDate.toISOString().split("T")[0];
-
-    startDateInput.setAttribute("min", formattedMinDate);
-    startDateInput.setAttribute("max", formattedMaxDate);
-    endDateInput.setAttribute("min", formattedMinDate);
-    endDateInput.setAttribute("max", formattedMaxDate);
-
+    // Check availability when the start date changes
     startDateInput.addEventListener("change", function () {
-        let selectedStartDate = new Date(this.value);
-        
-        if (selectedStartDate < minDate || selectedStartDate > maxDate) {
-            this.value = "";
-            alert("Please select a date at least 2 days from today and within the next 4 months.");
-            return;
-        }
+        let selectedStartDate = this.value;
+        if (!selectedStartDate || !serviceInput.value) return;
 
-        // Set min end date based on start date
-        endDateInput.setAttribute("min", this.value);
-
-        // Check availability only if a service is selected
-        if (serviceInput.value) {
-            checkAvailability(this.value, serviceInput.value);
-        }
-    });
-
-    serviceInput.addEventListener("change", function () {
-        if (startDateInput.value) {
-            checkAvailability(startDateInput.value, this.value);
-        }
-    });
-
-    function checkAvailability(date, service) {
-        fetch(`/php/check_availability.php?date=${date}&service=${service}`)
+        fetch(`php/check_availability.php?date=${selectedStartDate}&service=${serviceInput.value}`)
         .then(response => response.text())
         .then(data => {
-            if (data === "unavailable") {
+            console.log("Availability Response:", data);
+            if (data.trim() === "unavailable") {
                 dateMessage.textContent = "Sorry, this date is already booked. Please choose another.";
                 submitBtn.disabled = true;
             } else {
@@ -55,6 +23,51 @@ document.addEventListener("DOMContentLoaded", function () {
                 submitBtn.disabled = false;
             }
         })
-        .catch(error => console.error('Error:', error));
-    }
+        .catch(error => console.error("Fetch Error:", error));
+    });
+
+    // Handle form submission
+    bookingForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent page reload
+
+        let formData = new FormData(this);
+
+        fetch("php/process_booking.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json()) // Parse JSON response
+        .then(data => {
+            console.log("Booking Response:", data); // Debugging
+
+            if (data.status === "success") {
+                // Fill the modal with booking details
+                document.getElementById("modalService").textContent = serviceInput.value;
+                document.getElementById("modalStartDate").textContent = startDateInput.value;
+                document.getElementById("modalEndDate").textContent = endDateInput.value;
+                document.getElementById("modalName").textContent = document.getElementById("name").value;
+                document.getElementById("modalLocation").textContent = document.getElementById("location").value;
+                document.getElementById("modalEmail").textContent = document.getElementById("email").value;
+
+                // Show the modal after submitting
+                let modal = new bootstrap.Modal(document.getElementById("bookingModal"));
+                modal.show();
+            } else {
+                alert("Error: " + data.message); // Show specific error
+            }
+        })
+        .catch(error => console.error("Submit Error:", error));
+    });
+
+    // Handle "Proceed to Payment" button click in the modal
+    document.getElementById("proceedToPayment").addEventListener("click", function () {
+        document.getElementById("bookingSummary").style.display = "none"; // Hide booking summary
+        document.getElementById("paymentSection").style.display = "block"; // Show payment section
+    });
+
+    // Handle "Confirm Payment" button click
+    document.getElementById("confirmPayment").addEventListener("click", function () {
+        alert("Payment successful! Thank you for your booking.");
+        window.location.href = "confirmation.html"; // Redirect to confirmation page after payment
+    });
 });
