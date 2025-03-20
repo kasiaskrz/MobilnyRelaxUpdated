@@ -42,14 +42,10 @@
     <div id="page-container">
         <div id="content-wrap">
             <br>
-            <div class="head">
-            <h1>Stay in Contact With Us!</h1>
-            <p>Would you like to make a booking for a specific date? Do you want to know more details about the renting?</p>
-            </div>
+
             <form id="contactForm" class="contact-form">
                 <h2>FILL OUT THE FORM AND WE WILL CONTACT YOU BACK</h2>
             
-                <!-- Service Selection -->
                 <div class="form-group">
                     <label for="service">Service</label>
                     <select id="service" name="service" required>
@@ -63,6 +59,7 @@
                 <div class="form-group">
                     <label for="startDate">From</label>
                     <input type="date" id="startDate" name="startDate" required>
+                    <span id="dateMessage" style="color: red;"></span>
                 </div>
             
                 <div class="form-group">
@@ -91,7 +88,7 @@
                 </div>
             
                 <div class="form-group">
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submitBtn">Submit</button>
                 </div>
             </form>
         </div>
@@ -155,6 +152,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
 
 </body>
 
