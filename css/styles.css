@@ -558,6 +558,22 @@ video {
   float: none;
 }
 
+/* Optional: smooth fade on modal */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+}
+
+/* Darken background when modal is shown */
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Optional: center payment success message */
+#paymentSection .text-center {
+  margin-top: 1rem;
+}
+
+
 @media (min-width: 768px) {
   .section .tiles {
     display: block;

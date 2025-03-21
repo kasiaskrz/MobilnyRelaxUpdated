@@ -1,34 +1,68 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     let startDateInput = document.getElementById("startDate");
     let endDateInput = document.getElementById("endDate");
     let serviceInput = document.getElementById("service");
-    let dateMessage = document.getElementById("dateMessage");
     let submitBtn = document.getElementById("submitBtn");
     let bookingForm = document.getElementById("contactForm");
 
-    // Check availability when the start date changes
+    let modalElement = document.getElementById("bookingModal");
+    let modal = new bootstrap.Modal(modalElement);
+    let proceedToPaymentBtn = document.getElementById("proceedToPayment");
+    let confirmPaymentBtn = document.getElementById("confirmPayment");
+
+    // Elements to show user info in modal
+    let modalService = document.getElementById("modalService");
+    let modalStartDate = document.getElementById("modalStartDate");
+    let modalEndDate = document.getElementById("modalEndDate");
+    let modalName = document.getElementById("modalName");
+    let modalLocation = document.getElementById("modalLocation");
+    let modalEmail = document.getElementById("modalEmail");
+
+    console.log("Submit Button Found:", submitBtn !== null);
+    console.log("Modal Element Found:", modalElement !== null);
+
+    // 📅 Set min (2 days before) and max (4 months ahead) date restrictions
+    const today = new Date();
+    const minDate = new Date(today);
+    minDate.setDate(today.getDate() + 2);
+    const maxDate = new Date(today);
+    maxDate.setMonth(today.getMonth() + 4);
+
+    const formattedMin = minDate.toISOString().split("T")[0];
+    const formattedMax = maxDate.toISOString().split("T")[0];
+
+    startDateInput.min = formattedMin;
+    startDateInput.max = formattedMax;
+    endDateInput.min = formattedMin;
+    endDateInput.max = formattedMax;
+
     startDateInput.addEventListener("change", function () {
         let selectedStartDate = this.value;
-        if (!selectedStartDate || !serviceInput.value) return;
+        console.log("Selected Date:", selectedStartDate);
+
+        // Update endDateInput's min to selected start date
+        endDateInput.min = selectedStartDate;
 
         fetch(`php/check_availability.php?date=${selectedStartDate}&service=${serviceInput.value}`)
-        .then(response => response.text())
-        .then(data => {
-            console.log("Availability Response:", data);
-            if (data.trim() === "unavailable") {
-                dateMessage.textContent = "Sorry, this date is already booked. Please choose another.";
-                submitBtn.disabled = true;
-            } else {
-                dateMessage.textContent = "";
-                submitBtn.disabled = false;
-            }
-        })
-        .catch(error => console.error("Fetch Error:", error));
+            .then(response => response.text())
+            .then(data => {
+                console.log("Availability Response:", data);
+                if (data.trim() === "unavailable") {
+                    document.getElementById("dateMessage").textContent = "Sorry, this date is already booked.";
+                    submitBtn.disabled = true;
+                } else {
+                    document.getElementById("dateMessage").textContent = "";
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => console.error("Fetch Error:", error));
     });
 
     // Handle form submission
     bookingForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent page reload
+        event.preventDefault();
+        console.log("📩 Booking form submitted!");
 
         let formData = new FormData(this);
 
@@ -36,38 +70,46 @@ document.addEventListener("DOMContentLoaded", function () {
             method: "POST",
             body: formData
         })
-        .then(response => response.json()) // Parse JSON response
-        .then(data => {
-            console.log("Booking Response:", data); // Debugging
+            .then(response => response.json())
+            .then(data => {
+                console.log("Booking Response:", data);
 
-            if (data.status === "success") {
-                // Fill the modal with booking details
-                document.getElementById("modalService").textContent = serviceInput.value;
-                document.getElementById("modalStartDate").textContent = startDateInput.value;
-                document.getElementById("modalEndDate").textContent = endDateInput.value;
-                document.getElementById("modalName").textContent = document.getElementById("name").value;
-                document.getElementById("modalLocation").textContent = document.getElementById("location").value;
-                document.getElementById("modalEmail").textContent = document.getElementById("email").value;
+                if (data.status === "success") {
+                    console.log("✅ Booking successful, opening modal...");
 
-                // Show the modal after submitting
-                let modal = new bootstrap.Modal(document.getElementById("bookingModal"));
-                modal.show();
-            } else {
-                alert("Error: " + data.message); // Show specific error
-            }
-        })
-        .catch(error => console.error("Submit Error:", error));
+                    // Fill modal with user input
+                    modalService.textContent = serviceInput.value;
+                    modalStartDate.textContent = startDateInput.value;
+                    modalEndDate.textContent = endDateInput.value;
+                    modalName.textContent = document.getElementById("name").value;
+                    modalLocation.textContent = document.getElementById("location").value;
+                    modalEmail.textContent = document.getElementById("email").value;
+
+                    modal.show();
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => console.error("Submit Error:", error));
     });
 
-    // Handle "Proceed to Payment" button click in the modal
-    document.getElementById("proceedToPayment").addEventListener("click", function () {
-        document.getElementById("bookingSummary").style.display = "none"; // Hide booking summary
-        document.getElementById("paymentSection").style.display = "block"; // Show payment section
+    proceedToPaymentBtn.addEventListener("click", function () {
+        console.log("🟢 Proceed to Payment clicked!");
+        document.getElementById("bookingSummary").style.display = "none";
+        document.getElementById("paymentSection").style.display = "block";
     });
 
-    // Handle "Confirm Payment" button click
-    document.getElementById("confirmPayment").addEventListener("click", function () {
-        alert("Payment successful! Thank you for your booking.");
-        window.location.href = "confirmation.html"; // Redirect to confirmation page after payment
+    confirmPaymentBtn.addEventListener("click", function () {
+        console.log("🟢 Confirm Payment clicked!");
+
+        // Replace the payment section with a success message
+        document.getElementById("paymentSection").innerHTML = `
+            <div class="text-center">
+                <h5 class="text-success">✅ Payment Successful!</h5>
+                <p>Thank you for your booking. We will contact you shortly.</p>
+            </div>
+        `;
+        // Reset the booking form after payment
+        bookingForm.reset();
     });
 });
