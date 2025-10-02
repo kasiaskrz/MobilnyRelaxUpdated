@@ -7,46 +7,61 @@
     <title data-lang="title">Mobilny Relax - Sauna & Jacuzzi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="img/icons/favicon.png">
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <div class="navbar-top" data-lang="navbar-top">We offer delivery, setup and start-up assistance.</div>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <video autoplay loop muted>
-                    <source src="img/Animated_Logo.mp4" type="video/mp4">
-                </video>
-            </a>
-        </div>
+<div class="navbar-top" data-lang="navbar-top">
+    We offer delivery, setup and start-up assistance.
+  </div>
+  
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <video autoplay loop muted>
+          <source src="img/Animated_Logo.mp4" type="video/mp4">
+        </video>
+      </a>
+    </div>
+  
+    <div class="navbar2">
 
-        <ul class="nav-links" id="myTopnav">
-            <li><a href="#about" data-lang="about">About</a></li>
-            <li><a href="services.html" data-lang="services">Services</a></li>
-            <li><a href="contact.html" data-lang="contact">Contact</a></li>
-            <li><a href="gallery.html" data-lang="gallery">Gallery</a></li>
-            <li><a href="faq.html" data-lang="faq">FAQ</a></li>
-        </ul>
-        <button class="phone-button" data-lang="phone-number">Phone Num</button>
-        <div class="nav-bottom">
-            <div class="language-buttons">
-                <button onclick="changeLanguage('en')">English</button>
-                <button onclick="changeLanguage('pl')">Polish</button>
-            </div>
-        </div>
-    </nav>
+      <button class="hamburger" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+  
+      <ul class="nav-links" id="myTopnav">
+        <li><a href="#about" data-lang="about" class="active">About</a></li>
+        <li><a href="services.html" data-lang="services">Services</a></li>
+        <li><a href="contact.html" data-lang="contact">Contact</a></li>
+        <li><a href="prices.html" data-lang="prices">Prices</a></li>
+        <li><a href="faq.html" data-lang="faq">FAQ</a></li>
+      </ul>
+    </div>
+  
+    <a href="tel:+48501477480">
+      <button class="phone-button" data-lang="phone-number">
+        Call Us +48 501 477 480
+      </button>
+    </a>
+  
+    <div class="nav-bottom">
+      <div class="language-buttons">
+        <button onclick="changeLanguage('en')" id="btn-en">ENG</button>
+        <button onclick="changeLanguage('pl')" id="btn-pl">PL</button>
+      </div>
+    </div>
+  </nav>
+  
 
     <div id="page-container">
         <div id="content-wrap">
             <div class="card text-bg-dark">
-                <img src="img/photos/photo_1.jpg" alt="Sauna & Jacuzzi">
+                <img src="img/photos/sauna&jacuzzi_main.jpg" alt="Sauna & Jacuzzi">
                 <div class="card-img-overlay">
                     <h5 data-lang="hero-title" class="card-title">Sauna & Jacuzzi on Wheels</h5>
-                    <p class="card-text" data-lang="hero-description">Relax on your terms!</p>
-                    <a id="first-button" href="contact.html">BOOK NOW</a>
+                    <a id="first-button" href="contact.html#contactForm" data-lang="book-now">CONTACT US</a>
                 </div>
             </div>
 
@@ -56,7 +71,7 @@
 
             <div class="section animate">
                 <div class="middle" id="about">
-                    <img src="img/photos/proposal_Image.jpg" />
+                    <img src="img/photos/sauna_doors.jpg" />
                 </div>
                 <div class="left title">
                     <div class="content">
@@ -67,13 +82,13 @@
                     </div>
                 </div>
                 <div class="right tiles">
-                    <img src="img/photos/proposal_Image_inverted.jpg" />
+                    <img src="img/photos/sauna_doors_inverted.jpg" />
                 </div>
             </div>
 
             <div class="section">
                 <div class="middle">
-                    <img src="img/photos/our-mission.jpg" />
+                    <img src="img/photos/decoration.jpg" />
                 </div>
                 <div class="right title">
                     <div class="content">
@@ -86,13 +101,13 @@
                 </div>
 
                 <div class="left tiles">
-                    <img src="img/photos/our-mission-inverted.jpg" />
+                    <img src="img/photos/decoration_inverted.jpg" />
                 </div>
             </div>
 
             <div class="section">
                 <div class="middle">
-                    <img src="img/photos/sauna-left.jpg" />
+                    <img src="img/photos/sauna.jpg" />
                 </div>
                 <div class="left title">
                     <div class="content">
@@ -105,28 +120,55 @@
                 </div>
 
                 <div class="right tiles">
-                    <img src="img/photos/jacuzzi-right.jpg" />
+                    <img src="img/photos/jacuzzi.jpg" />
                 </div>
             </div>
 
             <div class="section">
                 <div class="middle">
-                    <img src="img/photos/IMG20230111153556.jpg" />
+                    <img src="img/photos/sauna_inside_inverted.jpg" />
                 </div>
                 <div class="right title">
                     <div class="content">
                         <h2 data-lang="future-title">Health & Wellness</h2>
                         <p data-lang="future-description">Discover the physical and mental benefits of using a sauna or
                             jacuzzi.</p>
-                        <a href="services.html" data-lang="learn-more">Read more...</a>
+                        <a href="services.html#health-section" data-lang="learn-more">Read more...</a>
                     </div>
                 </div>
 
                 <div class="left tiles">
-                    <img src="img/photos/photo_3.jpg" />
+                    <img src="img/photos/sauna_inside.jpg" />
                 </div>
             </div>
+
+            
+            <section class="image-gallery">
+                <h2 data-lang="gallery-title">Image Gallery</h2>
+                
+                <div class="gallery-container">
+                    <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+            
+                    <div class="gallery-slide">
+                        <img id="galleryImage" src="img/gallery/image1.jpg" alt="Gallery Image">
+                    </div>
+            
+                    <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+                </div>
+            
+                <div class="thumbnails">
+                    <img src="img/photos/5.jpeg" onclick="showImage(0)" alt="Thumb 1">
+                    <img src="img/photos/1.jpeg" onclick="showImage(1)" alt="Thumb 2">
+                    <img src="img/photos/3.jpeg" onclick="showImage(2)" alt="Thumb 3">
+                    <img src="img/photos/6.jpeg" onclick="showImage(3)" alt="Thumb 4">
+                    <img src="img/photos/7.jpeg" onclick="showImage(4)" alt="Thumb 5">
+                    <img src="img/photos/sauna_rocks.jpg" onclick="showImage(5)" alt="Thumb 6">
+                </div>
+                
+            </section>
+
         </div>
+
 
         <footer>
             <div class="footer-container">
@@ -134,7 +176,7 @@
                     <a href="#about" data-lang="about">About</a>
                     <a href="services.html" data-lang="services">Services</a>
                     <a href="contact.html" data-lang="contact">Contact</a>
-                    <a href="gallery.html" data-lang="gallery">Gallery</a>
+                    <a href="prices.html" data-lang="prices">Prices</a>
                     <a href="faq.html" data-lang="faq">FAQ</a>
                 </div>
 
@@ -145,6 +187,8 @@
                 </div>
 
                 <hr>
+
+                
 
                 <div class="footer-info">
                     <p data-lang="footer-rights">&copy; 2025 Mobilny Relax. All Rights Reserved.</p>
@@ -160,45 +204,31 @@
         </footer>
     </div>
 
+    <button id="scrollUpBtn" title="Go to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
     <script>
-        let translations = {};
 
-        // Load translations
-        fetch("translations.json")
-            .then(response => response.json())
-            .then(data => {
-                translations = data;
-                applyLanguage(localStorage.getItem("selectedLanguage") || "en"); // Default to English
-            });
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.getElementById("menuToggle");
+            const navLinks = document.getElementById("myTopnav");
 
-        function changeLanguage(lang) {
-            localStorage.setItem("selectedLanguage", lang);
-            applyLanguage(lang);
-        }
-
-        function applyLanguage(lang) {
-            document.querySelectorAll("[data-lang]").forEach(element => {
-                let key = element.getAttribute("data-lang");
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-        }
-
-        // scroll to the 'about' section
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute("href"));
-                if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+            toggleBtn.addEventListener("click", function () {
+                navLinks.classList.toggle("show");
             });
         });
+        console.log("JS is loaded");
 
     </script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
     <script src="js/script.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/translations.js"></script>
+
 
 </body>
 

@@ -1,0 +1,88 @@
+
+.price-section {
+    padding-top: 40px;
+    text-align: center;
+  }
+  
+  .price-title {
+    font-family: 'Quilon';
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #5a2c00;
+  }
+  
+  .price-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin-bottom: 40px;
+  }
+  
+  .price-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .price-item {
+    font-family: 'Lato';
+    text-align: left;
+  }
+  
+  .price-item h3 {
+    font-size: 1.5rem;
+    font-family: 'Lato';
+    font-weight: 00;
+    color: #a14f00;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .price-item .line {
+    flex: 1;
+    height: 1px;
+    background-color: #a14f00;
+    margin: 0 10px;
+  }
+  
+  .price-item .amount {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  
+  .price-item p {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 4px;
+    font-weight: 300;
+  }
+  
+  .price-note p {
+    margin-top: 100px;
+    font-family: 'Quilon';
+    font-size: 1.2rem;
+    color: #222;
+    margin-bottom: 8px;
+  }
+  
+  .price-button {
+    display: inline-block;
+    margin-top: 70px;
+    padding: 12px 28px;
+    background-color: #4d3c2b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .price-button:hover {
+    background-color: #c4aa8d;
+  }
+  

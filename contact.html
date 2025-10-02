@@ -15,7 +15,10 @@
 
 <body>
     <!-- Navigation Bar -->
-    <div class="navbar-top" data-lang="navbar-top">We offer delivery, setup and start-up assistance.</div>
+    <div class="navbar-top" data-lang="navbar-top">
+        We offer delivery, setup and start-up assistance.
+    </div>
+
     <nav class="navbar">
         <div class="logo">
             <a href="index.html">
@@ -25,18 +28,29 @@
             </a>
         </div>
 
-        <ul class="nav-links" id="myTopnav">
-            <li><a href="index.html" data-lang="about">About</a></li>
-            <li><a href="services.html" data-lang="services">Services</a></li>
-            <li><a href="#" data-lang="contact">Contact</a></li>
-            <li><a href="gallery.html" data-lang="gallery">Gallery</a></li>
-            <li><a href="faq.html" data-lang="faq">FAQ</a></li>
-        </ul>
-        <button class="phone-button" data-lang="phone-number">Phone Num</button>
+        <div class="navbar2">
+
+            <button class="hamburger" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+            <ul class="nav-links" id="myTopnav">
+                <li><a href="index.html" data-lang="about">About</a></li>
+                <li><a href="services.html" data-lang="services">Services</a></li>
+                <li><a href="contact.html" data-lang="contact" class="active">Contact</a></li>
+                <li><a href="prices.html" data-lang="prices">Prices</a></li>
+                <li><a href="faq.html" data-lang="faq">FAQ</a></li>
+            </ul>
+        </div>
+
+        <a href="tel:+48501477480">
+            <button class="phone-button" data-lang="phone-number">
+                Call Us +48 501 477 480
+            </button>
+        </a>
+
         <div class="nav-bottom">
             <div class="language-buttons">
-                <button onclick="changeLanguage('en')">English</button>
-                <button onclick="changeLanguage('pl')">Polish</button>
+                <button onclick="changeLanguage('en')" id="btn-en">ENG</button>
+                <button onclick="changeLanguage('pl')" id="btn-pl">PL</button>
             </div>
         </div>
     </nav>
@@ -45,148 +59,186 @@
         <div id="content-wrap">
             <div class="contact-section">
                 <div class="contact-image">
-                  <img src="img/photos/jacuzzi_lake.jpeg">
+                    <img src="img/photos/jacuzzi_lake.jpeg" alt="Jacuzzi at Lake">
                 </div>
-              
+
                 <div class="contact-info">
-                  <h2>How can we<br><span>help?</span></h2>
-              
-                  <div class="contact-details">
-                    <div class="contact-box">
-                      <h3>PHONE</h3>
-                      <p><i class="fas fa-phone"></i><a href="tel:+48501477480">501 477 480</a></p>
+                    <h2 data-lang="how-can-we-help">How can we<br><span>help?</span></h2>
+
+                    <div class="contact-details">
+                        <div class="contact-box">
+                            <h3 data-lang="phone">PHONE</h3>
+                            <p><i class="fas fa-phone"></i><a href="tel:+48501501501">501 501 501</a></p>
+                        </div>
+                        <div class="contact-box">
+                            <h3 data-lang="address">ADDRESS</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Kraszewskiego 74<br>22-200 Włodawa, Poland</p>
+                        </div>
+                        <div class="contact-box">
+                            <h3 data-lang="email">E-MAIL</h3>
+                            <p><i class="fas fa-envelope"></i><a
+                                    href="mailto:skrzynia3@poczta.onet.pl">skrzynia3@poczta.onet.pl</a></p>
+                        </div>
                     </div>
-                    <div class="contact-box">
-                      <h3>ADDRESS</h3>
-                      <p><i class="fas fa-map-marker-alt"></i> Kraszewskiego 74<br>22-200 Włodawa</p>
-                    </div>
-                    <div class="contact-box">
-                      <h3>E-MAIL</h3>
-                      <p><i class="fas fa-envelope"></i> <a href="mailto:skrzynia3@poczta.onet.pl">skrzynia3@poczta.onet.pl</a></p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              
+            </div>
+
             <br><br><br>
 
+            <!-- Booking Form -->
             <form id="contactForm" class="contact-form">
-                <h2>BOOK A DATE</h2>
-            
+                <h2 data-lang="book-date">BOOK A DATE</h2>
+
+                <p class="reservation-note" data-lang="reservation-note">
+                    To confirm your booking, we kindly ask for a <strong>50 zł reservation fee</strong>.
+                    The remaining balance is due on the day of your booking.
+                </p>
+
                 <div class="form-group">
-                    <label for="service">Service</label>
+                    <label for="service" data-lang="select-service-label">Service</label>
                     <select id="service" name="service" required>
-                        <option value="" disabled selected>Select a service</option>
-                        <option value="sauna&jacuzzi">Sauna + Jacuzzi</option>
-                        <option value="sauna">Sauna</option>
-                        <option value="jacuzzi">Jacuzzi</option>
+                        <option value="" disabled selected data-lang="select-service-placeholder">Select a service
+                        </option>
+                        <option value="sauna&jacuzzi" data-lang="sauna-jacuzzi">Sauna + Jacuzzi</option>
+                        <option value="sauna" data-lang="sauna">Sauna</option>
+                        <option value="jacuzzi" data-lang="jacuzzi">Jacuzzi</option>
                     </select>
                 </div>
-            
+
                 <div class="form-group">
-                    <label for="startDate">From</label>
+                    <label for="startDate" data-lang="from-date">From</label>
                     <input type="date" id="startDate" name="startDate" required>
-                    <span id="dateMessage" style="color: red;"></span>
                 </div>
-            
+
                 <div class="form-group">
-                    <label for="endDate">To</label>
+                    <label for="endDate" data-lang="to-date">To</label>
                     <input type="date" id="endDate" name="endDate" required>
                 </div>
-            
+
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Please enter your name" required>
+                    <label for="name" data-lang="name-label">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Please enter your name" required
+                        data-lang-placeholder="enter-name">
                 </div>
-            
+
                 <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" placeholder="Please enter your city" required>
+                    <label for="location" data-lang="location-label">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Please enter your city" required
+                        data-lang-placeholder="enter-city">
                 </div>
-            
+
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    <label for="phone" data-lang="phone-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required
+                        data-lang-placeholder="enter-phone">
                 </div>
-            
+
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <label for="email" data-lang="email-label">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required
+                        data-lang-placeholder="enter-email">
                 </div>
-            
+
                 <div class="form-group">
-                    <button type="submit" id="submitBtn">Proceed to Payment</button>
+                    <button type="submit" id="submitBtn" data-lang="proceed-to-payment">Proceed to Payment</button>
                 </div>
             </form>
-        </div>
+            <br><br><br><br><br>
 
-        <!-- Booking Confirmation & Payment Modal -->
-        <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Booking Summary</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="modal-body-content">
-                        <!-- Booking Details -->
-                        <div id="bookingSummary">
-                            <p><strong>Service:</strong> <span id="modalService"></span></p>
-                            <p><strong>Start Date:</strong> <span id="modalStartDate"></span></p>
-                            <p><strong>End Date:</strong> <span id="modalEndDate"></span></p>
-                            <p><strong>Name:</strong> <span id="modalName"></span></p>
-                            <p><strong>Location:</strong> <span id="modalLocation"></span></p>
-                            <p><strong>Email:</strong> <span id="modalEmail"></span></p>
-                            <button class="btn btn-primary" id="proceedToPayment">Proceed to Payment</button>
+            <!-- Booking Modal -->
+            <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" data-lang="booking-summary">Booking Summary</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
-                        <!-- Payment Form (Hidden Initially) -->
-                        <div id="paymentSection" style="display: none;">
-                            <h5>Enter Payment Details</h5>
-                            <input type="text" id="cardNumber" class="form-control" placeholder="Card Number">
-                            <input type="text" id="expiryDate" class="form-control" placeholder="Expiry Date">
-                            <input type="text" id="cvv" class="form-control" placeholder="CVV">
-                            <button class="btn btn-success mt-2" id="confirmPayment">Confirm Payment</button>
+                        <div class="modal-body" id="modal-body-content">
+                            <div id="bookingSummary">
+                                <p><strong data-lang="service">Service:</strong> <span id="modalService"></span></p>
+                                <p><strong data-lang="start-date">Start Date:</strong> <span id="modalStartDate"></span>
+                                </p>
+                                <p><strong data-lang="end-date">End Date:</strong> <span id="modalEndDate"></span></p>
+                                <p><strong data-lang="modal-name">Name:</strong> <span id="modalName"></span></p>
+                                <p><strong data-lang="modal-location">Location:</strong> <span
+                                        id="modalLocation"></span></p>
+                                <p><strong data-lang="modal-email">Email:</strong> <span id="modalEmail"></span></p>
+
+                                <button class="btn btn-primary" id="proceedToPayment"
+                                    data-lang="proceed-to-payment">Proceed to Payment</button>
+                            </div>
+
+                            <!-- Payment Section -->
+                            <div id="paymentSection" style="display: none;">
+                                <h5 data-lang="enter-payment-details">Enter Payment Details</h5>
+                                <input type="text" id="cardNumber" class="form-control" placeholder="Card Number">
+                                <input type="text" id="expiryDate" class="form-control" placeholder="Expiry Date">
+                                <input type="text" id="cvv" class="form-control" placeholder="CVV">
+                                <button class="btn btn-success mt-2" id="confirmPayment"
+                                    data-lang="confirm-payment">Confirm Payment</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-links">
+                        <a href="index.html" data-lang="about">About</a>
+                        <a href="services.html" data-lang="services">Services</a>
+                        <a href="#" data-lang="contact">Contact</a>
+                        <a href="prices.html" data-lang="prices">Prices</a>
+                        <a href="faq.html" data-lang="faq">FAQ</a>
+                    </div>
+
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img src="img/Logo.png">
+                        </a>
+                    </div>
+
+                    <hr>
+
+                    <div class="footer-info">
+                        <p data-lang="footer-rights">&copy; 2025 Mobilny Relax. All Rights Reserved.</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=100089057426576" target="_blank"><img
+                                src="img/icons/facebook.png"></a>
+                        <a href="https://www.instagram.com/mobilnyrelax/" target="_blank"><img
+                                src="img/icons/instagram.png"></a>
+                    </div>
+                </div>
+            </footer>
         </div>
 
-        <footer>
-            <div class="footer-container">
-                <div class="footer-links">
-                    <a href="index.html" data-lang="about">About</a>
-                    <a href="services.html" data-lang="services">Services</a>
-                    <a href="#" data-lang="contact">Contact</a>
-                    <a href="gallery.html" data-lang="gallery">Gallery</a>
-                    <a href="faq.html" data-lang="faq">FAQ</a>
-                </div>
+        <button id="scrollUpBtn" title="Go to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
 
-                <div class="footer-logo">
-                    <a href="index.html">
-                        <img src="img/Logo.png">
-                    </a>
-                </div>
+        <script>
 
-                <hr>
+            document.addEventListener("DOMContentLoaded", function () {
+                const toggleBtn = document.getElementById("menuToggle");
+                const navLinks = document.getElementById("myTopnav");
+    
+                toggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("show");
+                });
+            });
+            console.log("JS is loaded");
+    
+        </script>
 
-                <div class="footer-info">
-                    <p data-lang="footer-rights">&copy; 2025 Mobilny Relax. All Rights Reserved.</p>
-                </div>
-
-                <div class="footer-social">
-                    <a href="https://www.facebook.com/profile.php?id=100089057426576" target="_blank"><img src="img/icons/facebook.png"></a>
-                    <a href="https://www.instagram.com/mobilnyrelax/" target="_blank"><img src="img/icons/instagram.png"></a>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/contact.js"></script>
+        <script src="js/scroll.js"></script>
+        <script src="js/translations.js"></script>
 
 </body>
 

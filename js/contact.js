@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Submit Button Found:", submitBtn !== null);
     console.log("Modal Element Found:", modalElement !== null);
 
-    // 📅 Set min (2 days before) and max (4 months ahead) date restrictions
+    // Set min (2 days before) and max (4 months ahead) date restrictions
     const today = new Date();
     const minDate = new Date(today);
     minDate.setDate(today.getDate() + 2);
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle form submission
     bookingForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        console.log("📩 Booking form submitted!");
+        console.log("Booking form submitted!");
 
         let formData = new FormData(this);
 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Booking Response:", data);
 
                 if (data.status === "success") {
-                    console.log("✅ Booking successful, opening modal...");
+                    console.log(" Booking successful, opening modal...");
 
                     // Fill modal with user input
                     modalService.textContent = serviceInput.value;
@@ -94,18 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     proceedToPaymentBtn.addEventListener("click", function () {
-        console.log("🟢 Proceed to Payment clicked!");
+        console.log("Proceed to Payment clicked!");
         document.getElementById("bookingSummary").style.display = "none";
         document.getElementById("paymentSection").style.display = "block";
     });
 
     confirmPaymentBtn.addEventListener("click", function () {
-        console.log("🟢 Confirm Payment clicked!");
+        console.log("Confirm Payment clicked!");
 
         // Replace the payment section with a success message
         document.getElementById("paymentSection").innerHTML = `
             <div class="text-center">
-                <h5 class="text-success">✅ Payment Successful!</h5>
+                <h5 class="text-success">Payment Successful!</h5>
                 <p>Thank you for your booking. We will contact you shortly.</p>
             </div>
         `;

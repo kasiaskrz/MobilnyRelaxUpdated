@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$username = "stkptr6_kasia"; // Use your cPanel MySQL username
-$password = "8nL5^bFUhMzO"; // Use your cPanel MySQL password
-$database = "stkptr6_mobilny_relax"; // Use your database name
+$username = "stkptr6_kasia"; // cPanel MySQL username
+$password = "8nL5^bFUhMzO"; // cPanel MySQL password
+$database = "stkptr6_mobilny_relax"; // database name
 
 $connection = new mysqli($host, $username, $password, $database);
 

@@ -15,7 +15,7 @@ function proceedToPayment() {
     alert("Redirecting to payment gateway...");
     let bookingId = document.getElementById("bookingId").textContent;
     
-    // Replace with your actual payment gateway URL
+    // payment gateway URL
     window.location.href = `https://yourpaymentgateway.com?booking_id=${bookingId}`;
 }
 
